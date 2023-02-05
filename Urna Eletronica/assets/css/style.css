@@ -99,7 +99,6 @@
    background-color: #fff;
    text-align: center;
    font-size: 14px;
-   
 }
 .d-1-img img{
    width: 100%;
@@ -107,7 +106,6 @@
 .d-1-img.small{
    width: 86%;
    font-size: 12px;
-
 }
 .d-2 {
   height: 50px;
@@ -143,6 +141,7 @@
 .botao--confirma {
   font-size: var(--secundary-btns);
   color: var(--secundary-btns-color);
+  padding: 0 39px;
 }
 .botao--branco {
   background-color: #fff;
