@@ -46,12 +46,15 @@ function atualizaInterface() {
     `;
     avisos.style.display = "block";
 
-    let fotosHtml = '';
-    for(let i in candidato.fotos){
-      fotosHtml += `<div class="d-1-img"><img src="assets/img/${candidato.fotos[i].url}" alt=""/>${candidato.fotos[i].legenda}</div>`
+    let fotosHtml = "";
+    for (let i in candidato.fotos) {
+      fotosHtml += `<div class="d-1-img"><img src="assets/img/${candidato.fotos[i].url}" alt=""/>${candidato.fotos[i].legenda}</div>`;
     }
     lateralCard.innerHTML = fotosHtml;
   } else {
+    seuVotoPara.style.display = "block";
+    avisos.style.display = "block";
+    descricao.innerHTML = '<div class="aviso-grande pisca">VOTO NULO</div>'
   }
 }
 
