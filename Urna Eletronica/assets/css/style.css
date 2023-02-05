@@ -1,3 +1,9 @@
+:root{
+   --primary-btns: 25px;
+   --secundary-btns: 15px;
+   --secundary-btns-color: #000;
+}
+
 *{
    box-sizing: border-box;
    margin: 0;
@@ -17,7 +23,7 @@
    width: 500px;
    height: 320px;
    background: linear-gradient(to right, #e8e8e8, #c1c1c1);
-  
+   border: 2px solid #555;
 }
 
 .teclado{
@@ -27,6 +33,7 @@
 .teclado--linha{
    display: flex;
    justify-content: center;
+   align-items: flex-end;
 }
 .teclado--botao{
    width: 70px;
@@ -40,4 +47,22 @@
    cursor: pointer;
    margin: 10px;
    box-shadow: 3px 3px 0 #555;
+   border-radius: 2px;
+}
+.botao--branco,
+.botao--corrige,
+.botao--confirma{
+   font-size: var(--secundary-btns);
+   color: var(--secundary-btns-color);
+}
+.botao--branco{
+   background-color: #fff;
+}
+.botao--corrige{
+   background-color: #f09046;
+}
+.botao--confirma{
+   background-color: #48c079;
+   width: 90px;
+   height: 50px;
 }
