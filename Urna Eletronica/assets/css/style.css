@@ -50,39 +50,37 @@
   height: 80px;
   width: 150px;
 }
-.card-titulo{
+.card-titulo {
   text-align: center;
-  
 }
-h1{
+h1 {
   text-transform: uppercase;
   color: #403a3a;
 }
-.card-titulo a{
+.card-titulo a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #131313
+  color: #131313;
 }
-.card-titulo span{
+.card-titulo span {
   display: none;
 }
-.card-titulo span:hover{
+.card-titulo span:hover {
   display: none;
   display: block;
 }
-.card-titulo a:hover{
+.card-titulo a:hover {
   color: rgb(26, 97, 0);
   font-weight: 600;
   animation-name: pisca;
   animation-duration: 1s;
   animation-iteration-count: infinite;
-  
 }
-.icon{
+.icon {
   display: flex;
   align-items: center;
 }
-.icon i{
+.icon i {
   margin-left: 10px;
   font-size: 2.4rem;
   color: #ffffff;
@@ -133,7 +131,6 @@ h1{
 
 .numero {
   display: inline-block;
-
   height: 40px;
   width: 40px;
   border: 1px solid rgb(0, 0, 0);
@@ -221,4 +218,45 @@ h1{
   font-size: 40px;
   font-weight: bold;
   margin-top: 10px;
+}
+.aviso--gigante {
+  font-size: 70px;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    padding: 10px;
+  }
+  .urna {
+    flex-direction: column;
+    width: 100%;
+  }
+  .tela {
+    width: 100%;
+  }
+  .teclado {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media (max-width: 365px) {
+  .urna {
+    padding: 0;
+  }
+  .teclado--botao {
+    width: 60px;
+    height: 35px;
+    font-size: 22px;
+  }
+  .botao--branco,
+  .botao--corrige,
+  .botao--confirma {
+    font-size: 12px;
+  }
 }

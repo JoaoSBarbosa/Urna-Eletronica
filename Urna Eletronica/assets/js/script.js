@@ -10,6 +10,7 @@ let numeros = document.querySelector(".d-1-card3");
 let etapaAtual = 0;
 let numeroDigitado = "";
 let Votobranco = false;
+let votos = [];
 
 // Funções
 function comecarEtapa() {
@@ -103,9 +104,17 @@ function confirma() {
   let votoConfirmado = false;
 
   if (Votobranco === true) {
+    votos.push({
+      etapa: etapas[etapaAtual].titulo,
+      voto: 'Branco'
+    })
     votoConfirmado = true;
   } else if (numeroDigitado.length === etapa.numeros) {
     votoConfirmado = true;
+    votos.push({
+      etapa: etapas[etapaAtual].titulo,
+      voto: numeroDigitado
+    });
   }
   if (votoConfirmado) {
     etapaAtual++;
@@ -113,7 +122,8 @@ function confirma() {
     if (etapas[etapaAtual] !== undefined) {
       comecarEtapa();
     } else {
-      alert("fim");
+      document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
+      console.log(votos);
     }
   }
 }
