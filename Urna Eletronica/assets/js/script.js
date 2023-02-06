@@ -9,11 +9,15 @@ let numeros = document.querySelector(".d-1-card3");
 // VARIAVEIS DE AMBIENTE - ETAPAS
 let etapaAtual = 0;
 let numeroDigitado = "";
+let Votobranco = false;
 
 // Funções
 function comecarEtapa() {
   let etapa = etapas[etapaAtual];
   let numeroHtml = "";
+  numeroDigitado = "";
+  Votobranco = false;
+
   for (let i = 0; i < etapa.numeros; i++) {
     if (i === 0) {
       numeroHtml += '<div class="numero pisca"></div>';
@@ -48,13 +52,17 @@ function atualizaInterface() {
 
     let fotosHtml = "";
     for (let i in candidato.fotos) {
-      fotosHtml += `<div class="d-1-img"><img src="assets/img/${candidato.fotos[i].url}" alt=""/>${candidato.fotos[i].legenda}</div>`;
+      if (candidato.fotos[i].small) {
+        fotosHtml += `<div class="d-1-img small"><img src="assets/img/${candidato.fotos[i].url}" alt=""/>${candidato.fotos[i].legenda}</div>`;
+      } else {
+        fotosHtml += `<div class="d-1-img"><img src="assets/img/${candidato.fotos[i].url}" alt=""/>${candidato.fotos[i].legenda}</div>`;
+      }
     }
     lateralCard.innerHTML = fotosHtml;
   } else {
     seuVotoPara.style.display = "block";
     avisos.style.display = "block";
-    descricao.innerHTML = '<div class="aviso-grande pisca">VOTO NULO</div>'
+    descricao.innerHTML = '<div class="aviso-grande pisca">VOTO NULO</div>';
   }
 }
 
@@ -74,12 +82,48 @@ function clicou(n) {
 }
 
 function branco() {
-  alert("Clicou em BRANCO");
+  if (numeroDigitado == "") {
+    Votobranco = true;
+    seuVotoPara.style.display = "block";
+    avisos.style.display = "block";
+    descricao.innerHTML =
+      '<div class="aviso-grande pisca">VOTO EM BRANCO</div>';
+    numeros.innerHTML = "";
+  } else {
+    alert(
+      "Para votar em BRANCO, nenhum número pode ser digitado \n Pressione CORRIGE e depois, pressione BRANCO."
+    );
+  }
 }
 function corrige() {
-  alert("Clicou em CORRIGE");
+  comecarEtapa();
 }
 function confirma() {
-  alert("Clicou em CONFIRMA");
+  let etapa = etapas[etapaAtual];
+  let votoConfirmado = false;
+
+  if (Votobranco === true) {
+    votoConfirmado = true;
+  } else if (numeroDigitado.length === etapa.numeros) {
+    votoConfirmado = true;
+  }
+  if (votoConfirmado) {
+    etapaAtual++;
+
+    if (etapas[etapaAtual] !== undefined) {
+      comecarEtapa();
+    } else {
+      alert("fim");
+    }
+  }
 }
+function show() {
+  let span = document.querySelector(".by");
+  if (span.style.display === "none") {
+    span.style.display = "inline-block";
+  } else {
+    span.style.display = "none";
+  }
+}
+
 comecarEtapa();
